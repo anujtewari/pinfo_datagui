@@ -1,3 +1,3 @@
 # pinfo_datagui
 
-Population Informatics Data GUI for the Web
+Population Informatics Data GUI for the Web.
