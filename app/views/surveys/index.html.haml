@@ -7,10 +7,14 @@
     = text_field :search, :survey_name, :placeholder => "Enter the search term for surveys", :id => 'search_survey_input'
     = submit_tag 'Search Surveys', :id=> 'search_survey_button'
 
+
+
+-
 %div#menuDiv
   - if current_user.admin != 0
     = link_to 'Create New Survey', new_survey_path, :id => "createSurveys", :class => 'btn'
     = link_to "Add Surveys to Users", survey_users_path, :id => "addUserToSurveys", :class => 'btn'
+  = link_to "Upload CSV", survey_users_path, :id => "uploadCSV", :class => 'btn'
 
 %table#surveys
   %thead
