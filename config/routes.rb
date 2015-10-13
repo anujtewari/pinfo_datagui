@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'file/upload'
-
   devise_for :users , :skip => :registrations
   resources :survey_users
   resources :manageusers 
