@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :file_upload
+  resources :uploads
   #get 'file_upload/index'
 
   devise_for :users , :skip => :registrations
