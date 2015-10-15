@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+ # resources :uploads/new
+  
+ # get 'uploads/new'
   resources :uploads
   #get 'file_upload/index'
 

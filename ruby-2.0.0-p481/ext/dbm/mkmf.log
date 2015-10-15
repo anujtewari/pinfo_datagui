@@ -1,0 +1,701 @@
+have_type: checking for DBM in ndbm.h... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+conftest.c:3:18: fatal error: ndbm.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ndbm.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:16: fatal error: db.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db2/db.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:20: fatal error: db2/db.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db2/db.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db2.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:17: fatal error: db2.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db2.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:16: fatal error: db.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db1/ndbm.h... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+conftest.c:3:22: fatal error: db1/ndbm.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db1/ndbm.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db1.h... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+conftest.c:3:17: fatal error: db1.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db1.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in ndbm.h... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+conftest.c:3:18: fatal error: ndbm.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ndbm.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db5/db.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:20: fatal error: db5/db.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db5/db.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db5.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:17: fatal error: db5.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db5.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:16: fatal error: db.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db4/db.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:20: fatal error: db4/db.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db4/db.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db4.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:17: fatal error: db4.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db4.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:16: fatal error: db.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db3/db.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:20: fatal error: db3/db.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db3/db.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db3.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:17: fatal error: db3.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db3.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_type: checking for DBM in db.h with -DDB_DBM_HSEARCH... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  -DDB_DBM_HSEARCH -c conftest.c"
+conftest.c:3:16: fatal error: db.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <db.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_library: checking for main() in -lgdbm... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5:57: error: ‘main’ undeclared (first use in this function)
+conftest.c:5:57: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:5:32: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L. -fstack-protector -rdynamic -Wl,-export-dynamic     -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:5:1: warning: implicit declaration of function ‘main’ [-Wimplicit-function-declaration]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int t(void) { main(); return 0; }
+ 6: int main(int argc, char **argv)
+ 7: {
+ 8:   if (argc > 1000000) {
+ 9:     printf("%p", &t);
+10:   }
+11: 
+12:   return 0;
+13: }
+/* end */
+
+--------------------
+
+have_type: checking for DBM in gdbm-ndbm.h... -------------------- yes
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <gdbm-ndbm.h>
+4: 
+5: /*top*/
+6: typedef DBM conftest_type;
+7: int conftestval[sizeof(conftest_type)?1:-1];
+/* end */
+
+--------------------
+
+have_library: checking for dbm_open("", 0, 0) in -lgdbm_compat... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lgdbm  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm_compat -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <gdbm-ndbm.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int t(void) { dbm_open("", 0, 0); return 0; }
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+/* end */
+
+--------------------
+
+have_func: checking for dbm_clearerr((DBM *)0) in gdbm-ndbm.h... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lgdbm_compat -lgdbm  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm_compat -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <gdbm-ndbm.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int t(void) { dbm_clearerr((DBM *)0); return 0; }
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+/* end */
+
+--------------------
+
+have_macro: checking for DBM_SUFFIX in gdbm-ndbm.h... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+conftest.c:6:3: error: #error 
+conftest.c:7:1: error: expected identifier or ‘(’ before ‘|’ token
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <gdbm-ndbm.h>
+4: /*top*/
+5: #ifndef DBM_SUFFIX
+6: # error
+7: |:/ === DBM_SUFFIX undefined === /:|
+8: #endif
+/* end */
+
+--------------------
+
+have_empty_macro_dbm_clearerr: checking for empty macro of dbm_clearerr(foobarbaz) in gdbm-ndbm.h... -------------------- yes
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <gdbm-ndbm.h>
+4: 
+5: /*top*/
+6: dbm_clearerr(foobarbaz)
+/* end */
+
+--------------------
+
+have_macro: checking for _GDBM_H_ in gdbm-ndbm.h... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+conftest.c:6:3: error: #error 
+conftest.c:7:1: error: expected identifier or ‘(’ before ‘|’ token
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <gdbm-ndbm.h>
+4: /*top*/
+5: #ifndef _GDBM_H_
+6: # error
+7: |:/ === _GDBM_H_ undefined === /:|
+8: #endif
+/* end */
+
+--------------------
+
+have_macro: checking for _DBM_IOERR in gdbm-ndbm.h... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+conftest.c:6:3: error: #error 
+conftest.c:7:1: error: expected identifier or ‘(’ before ‘|’ token
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <gdbm-ndbm.h>
+4: /*top*/
+5: #ifndef _DBM_IOERR
+6: # error
+7: |:/ === _DBM_IOERR undefined === /:|
+8: #endif
+/* end */
+
+--------------------
+
+have_func: checking for db_version((int *)0, (int *)0, (int *)0) in gdbm-ndbm.h... -------------------- no
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lgdbm_compat -lgdbm  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm_compat -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:7:1: warning: implicit declaration of function ‘db_version’ [-Wimplicit-function-declaration]
+/tmp/ccR4Xqse.o: In function `t':
+/home/saasbook/Documents/pinfo_datagui/ruby-2.0.0-p481/ext/dbm/conftest.c:7: undefined reference to `db_version'
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <gdbm-ndbm.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int t(void) { db_version((int *)0, (int *)0, (int *)0); return 0; }
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+/* end */
+
+--------------------
+
+have_declared_libvar: checking for gdbm_version in gdbm-ndbm.h... -------------------- no
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lgdbm_compat -lgdbm  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘main’:
+conftest.c:7:25: error: ‘gdbm_version’ undeclared (first use in this function)
+conftest.c:7:25: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:7:9: warning: unused variable ‘conftest_var’ [-Wunused-variable]
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <gdbm-ndbm.h>
+4: 
+5: /*top*/
+6: int main(int argc, char *argv[]) {
+7:   void *conftest_var = &gdbm_version;
+8:   return 0;
+9: }
+/* end */
+
+--------------------
+
+have_undeclared_libvar: checking for gdbm_version char * in gdbm-ndbm.h... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lgdbm_compat -lgdbm  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘main’:
+conftest.c:9:18: warning: unused variable ‘conftest_var’ [-Wunused-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <gdbm-ndbm.h>
+ 4: 
+ 5: /*top*/
+ 6: int main(int argc, char *argv[]) {
+ 7:   typedef char * conftest_type;
+ 8:   extern conftest_type gdbm_version;
+ 9:   conftest_type *conftest_var = &gdbm_version;
+10:   return 0;
+11: }
+/* end */
+
+--------------------
+
+have_var: checking for dpversion in gdbm-ndbm.h... -------------------- no
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+conftest.c: In function ‘t’:
+conftest.c:7:55: error: ‘dpversion’ undeclared (first use in this function)
+conftest.c:7:55: note: each undeclared identifier is reported only once for each function it appears in
+conftest.c:7:45: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <gdbm-ndbm.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int t(void) { const volatile void *volatile p; p = &(&dpversion)[0]; return 0; }
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+/* end */
+
+--------------------
+
+have_header: checking for cdefs.h... -------------------- no
+
+"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+conftest.c:3:19: fatal error: cdefs.h: No such file or directory
+compilation terminated.
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <cdefs.h>
+/* end */
+
+--------------------
+
+have_header: checking for sys/cdefs.h... -------------------- yes
+
+"gcc -E -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <sys/cdefs.h>
+/* end */
+
+--------------------
+
+have_func: checking for dbm_pagfno((DBM *)0) in gdbm-ndbm.h... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lgdbm_compat -lgdbm  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm_compat -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <gdbm-ndbm.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int t(void) { dbm_pagfno((DBM *)0); return 0; }
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+/* end */
+
+--------------------
+
+have_func: checking for dbm_dirfno((DBM *)0) in gdbm-ndbm.h... -------------------- yes
+
+"gcc -o conftest -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration conftest.c  -L. -L../.. -L. -fstack-protector -rdynamic -Wl,-export-dynamic    -lgdbm_compat -lgdbm  -Wl,-R -Wl,/usr/local/lib -L/usr/local/lib -lruby-static -lgdbm_compat -lgdbm  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <gdbm-ndbm.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int t(void) { dbm_dirfno((DBM *)0); return 0; }
+ 8: int main(int argc, char **argv)
+ 9: {
+10:   if (argc > 1000000) {
+11:     printf("%p", &t);
+12:   }
+13: 
+14:   return 0;
+15: }
+/* end */
+
+--------------------
+
+convertible_int: checking for convertible type of datum.dsize... -------------------- int
+
+"gcc -I../../.ext/include/i686-linux -I../.././include -I../.././ext/dbm  -D_FILE_OFFSET_BITS=64   -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wunused-variable -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wimplicit-function-declaration   -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <gdbm-ndbm.h>
+4: typedef datum rbcv_typedef_;
+5: static rbcv_typedef_ rbcv_var;
+6: /*top*/
+7: int conftest_const[(sizeof(rbcv_var.dsize) == sizeof(int)) ? 1 : -1];
+/* end */
+
+--------------------
+
+extconf.h is:
+/* begin */
+ 1: #ifndef EXTCONF_H
+ 2: #define EXTCONF_H
+ 3: #define RUBYDBM_DBM_HEADER "gdbm-ndbm.h"
+ 4: #define RUBYDBM_DBM_TYPE "gdbm_compat"
+ 5: #define HAVE_TYPE_DBM 1
+ 6: #define HAVE_DBM_CLEARERR 1
+ 7: #define RUBYDBM_GDBM_HEADER 1
+ 8: #define HAVE_UNDECLARED_LIBVAR_GDBM_VERSION 1
+ 9: #define DBM_HDR <gdbm-ndbm.h>
+10: #define HAVE_SYS_CDEFS_H 1
+11: #define HAVE_DBM_PAGFNO 1
+12: #define HAVE_DBM_DIRFNO 1
+13: #define SIZEOF_DATUM_DSIZE SIZEOF_INT
+14: #define TYPEOF_DATUM_DSIZE int
+15: #define PRI_DATUM_DSIZE_PREFIX PRI_INT_PREFIX
+16: #define DATUM_DSIZE2NUM INT2NUM
+17: #define NUM2DATUM_DSIZE NUM2INT
+18: #endif
+/* end */
+
