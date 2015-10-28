@@ -1,7 +1,6 @@
 class UploadsController < ApplicationController
   def index
-    @id = params[:id]
-    flash[:notice] = "#{@id} It is id"
+    @id = params[:id]    
     @uploads = Upload.all
   end
 
