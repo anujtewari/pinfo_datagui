@@ -1,13 +1,26 @@
 class GraphsController < ApplicationController
   def index
   	#puts "Hello world"
+  	id = params[:id]
+  	path = File.expand_path("../../../public" + id, __FILE__)
+  	flash[:notice] = "#{path} It is id"
+  	data = Hash.new
+  	i = 1
+  	File.open(path, "r") do |f|
+  		f.each_line do |line|
+  			line = line.strip()
+  			data[i] = line.split(',').map{|s| s.to_i}
+    		flash[:notice] = "#{data[1]} "
+    		i += 1
+  		end
+	end
 	@chart = LazyHighCharts::HighChart.new('graph') do |f|
 	  f.title({ :text=>"Diabetes Results"})
  	  f.options[:xAxis][:categories] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
- 	  f.options[:yAxis][:title][:text] = '(in mg)'
+ 	  f.options[:yAxis][:title][:text] = '(in mg/dl)'
 	  #f.labels(:items=>[:html=>"Diabetes Value", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ]) 
-	  f.series(:type=> 'column',:name=> 'Before Breakfast',:data=> [3, 2, 1, 3, 4,6])
-	  f.series(:type=> 'column',:name=> 'After Breakfast',:data=> [2, 3, 5, 7, 6,8])
+	  f.series(:type=> 'column',:name=> 'Before Breakfast',:data=> data[1])
+	  f.series(:type=> 'column',:name=> 'After Breakfast',:data=> data[2])
 	  f.series(:type=> 'column',:name=> 'Before Lunch',:data=> [4, 3, 3, 9, 9,1])
 	  f.series(:type=> 'column',:name=> 'After Lunch',:data=> [4, 3, 3, 9, 9,7])
 	  f.series(:type=> 'column',:name=> 'Before Dinner', :data=> [3, 2.67, 3, 6.33, 3.33,2.9])
@@ -23,7 +36,7 @@ class GraphsController < ApplicationController
 	@line_chart = LazyHighCharts::HighChart.new('graph') do |f|
 	  f.title({ :text=>"Diabetes Results"})
  	  f.options[:xAxis][:categories] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
- 	  f.options[:yAxis][:title][:text] = '(in mg)'
+ 	  f.options[:yAxis][:title][:text] = '(in mg/dl)'
 	  #f.labels(:items=>[:html=>"Diabetes Value", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ]) 
 	  f.series(:type=> 'spline',:name=> 'Before Breakfast',:data=> [3, 2, 1, 3, 4,6])
 	  f.series(:type=> 'spline',:name=> 'After Breakfast',:data=> [2, 3, 5, 7, 6,8])
