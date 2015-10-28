@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  
+  resources :graphs
+
+
  # resources :uploads/new
   
  # get 'uploads/new'
