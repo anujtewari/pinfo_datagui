@@ -37,7 +37,7 @@ class GraphsController < ApplicationController
 	  f.series(:type=> 'column',:name=> 'After Lunch',:data=> data[4])
 	  f.series(:type=> 'column',:name=> 'Before Dinner', :data=> data[5])
 	  f.series(:type=> 'column',:name=> 'After Dinner', :data=> data[6])
-	  f.series(:type=> 'spline',:name=> 'Average', :data=> average)
+	  f.series(:type=> 'line',:name=> 'Average', :data=> average)
 
 	 
 	end
@@ -56,12 +56,12 @@ class GraphsController < ApplicationController
  	  f.options[:xAxis][:categories] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday']
  	  f.options[:yAxis][:title][:text] = '(in mg/dl)'
 	  #f.labels(:items=>[:html=>"Diabetes Value", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ]) 
-	  f.series(:type=> 'spline',:name=> 'Before Breakfast',:data=> data[1])
-	  f.series(:type=> 'spline',:name=> 'After Breakfast',:data=> data[2])
-	  f.series(:type=> 'spline',:name=> 'Before Lunch',:data=> data[3])
-	  f.series(:type=> 'spline',:name=> 'After Lunch',:data=> data[4])
-	  f.series(:type=> 'spline',:name=> 'Before Dinner', :data=> data[5])
-	  f.series(:type=> 'spline',:name=> 'After Dinner', :data=> data[6])
+	  f.series(:type=> 'line',:name=> 'Before Breakfast',:data=> data[1])
+	  f.series(:type=> 'line',:name=> 'After Breakfast',:data=> data[2])
+	  f.series(:type=> 'line',:name=> 'Before Lunch',:data=> data[3])
+	  f.series(:type=> 'line',:name=> 'After Lunch',:data=> data[4])
+	  f.series(:type=> 'line',:name=> 'Before Dinner', :data=> data[5])
+	  f.series(:type=> 'line',:name=> 'After Dinner', :data=> data[6])
 	  
   end
 end
