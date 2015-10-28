@@ -4,18 +4,21 @@
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 <td><%= check_box_tag(:line) %><%= label_tag(:line, "Spline Graph") %></td></tr>
 </table>
+<table>
+<td>
 <div id="Bar_Chart_div" class="hidden">
 <p>
  <%= high_chart("chart", @chart) %>
 </p>
 </div>
-
+</td><td>
 <div id="Line_Chart_div" class="hidden">
 <p>
  <%= high_chart("line_chart", @line_chart) %>
 </p>
 </div>
-
+</td>
+</table>
 
 
 
