@@ -2,8 +2,7 @@ class GraphsController < ApplicationController
   def index
   	#puts "Hello world"
   	id = params[:id]
-  	path = File.expand_path("../../../public" + id, __FILE__)
-  	# flash[:notice] = "#{path} It is id"
+  	path = File.expand_path("../../../public" + id, __FILE__)  	
   	data = Hash.new
   	i = 1
   	average=[0,0,0,0,0,0,0]
