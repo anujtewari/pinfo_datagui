@@ -1,18 +1,18 @@
 <h1>Chart</h1>
 <table>
-<tr><td><%= check_box_tag(:bar) %><%= label_tag(:bar, "Bar Graph") %></td>
+<tr><td><%= check_box_tag(:bar,1,true) %><%= label_tag(:bar, "Bar Graph") %></td>
 <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td><%= check_box_tag(:line) %><%= label_tag(:line, "Spline Graph") %></td></tr>
+<td><%= check_box_tag(:line,1,true) %><%= label_tag(:line, "Spline Graph") %></td></tr>
 </table>
 <table>
 <td>
-<div id="Bar_Chart_div" class="hidden">
+<div id="Bar_Chart_div" >
 <p>
  <%= high_chart("chart", @chart) %>
 </p>
 </div>
 </td><td>
-<div id="Line_Chart_div" class="hidden">
+<div id="Line_Chart_div" >
 <p>
  <%= high_chart("line_chart", @line_chart) %>
 </p>
