@@ -1,6 +1,7 @@
 class GraphsController < ApplicationController
   def index
-  	#puts "Hello world"
+  	#This controller will be contain the parser code 
+  	# and the logic for displaying different types of tables
   	id = params[:id]
   	path = File.expand_path("../../../public" + id, __FILE__)  	
   	data = Hash.new
@@ -14,7 +15,7 @@ class GraphsController < ApplicationController
   				average[k]= average[k]+ data[i][k]
   			end
   			
-    		# flash[:notice] = "#{data[1]} "
+    		
     		i += 1
   		end
 	end
@@ -39,16 +40,8 @@ class GraphsController < ApplicationController
 	  f.series(:type=> 'line',:name=> 'Average', :data=> average)
 
 	 
-	end
-	  #f.series(:type=> 'pie',:name=> 'Total consumption', 
-	  #:data=> [
-	   # {:name=> 'Jane', :y=> 13, :color=> 'red'}, 
-	    #{:name=> 'John', :y=> 23,:color=> 'green'},
-	    #{:name=> 'Joe', :y=> 19,:color=> 'blue'}
-	  #],
-	  #:center=> [100, 80], :size=> 100, :showInLegend=> false)
+	end 
 
-	
 
 	@line_chart = LazyHighCharts::HighChart.new('graph') do |f|
 	  f.title({ :text=>"Diabetes Results"})
