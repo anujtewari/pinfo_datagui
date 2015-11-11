@@ -89,6 +89,66 @@ class GraphsController < ApplicationController
 	  
   end
 end
-  def show
-  end
+def show
+end
+
+private
+def parseCSV
+	path = "data.csv";
+	data = CSV.read(path);
+	flagMultiple = FALSE
+	if data[0].length != data[1].length and data[0].length == 1
+		flagMultiple = TRUE
+	end
+	header = []
+	result = []
+	charts = {}
+
+	if flagMultiple
+		k = 1
+	else
+		k = 0
+	end
+
+	while TRUE
+		for i in k..data.length - 1
+			if data[i].length == 0 or i == data.length
+				if flagMultiple
+					charts[data[k-1][0]] = result
+				else
+					charts["Sinlge"] = result
+				end
+				result = []
+				header = []
+				k = i+2
+				break
+			end
+			temp = {}
+			for j in 0..data[i].length - 1
+				if i == k
+					header.push(data[i][j])
+				else
+					temp[header[j]] = data[i][j]
+				end
+			end
+			if i != k
+				result.push(temp)
+			end
+		end
+
+		if k >= data.length
+			break
+		end
+
+		if  i >= data.length-1
+			if flagMultiple
+				charts[data[k-1][0]] = result
+			else
+				charts["Sinlge"] = result
+			end
+			break
+		end
+	end
+	return charts
+end
 end
