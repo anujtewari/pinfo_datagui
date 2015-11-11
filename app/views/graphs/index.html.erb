@@ -25,8 +25,8 @@
     <th> X Axis </th> <th> Y Axis </th>
     <% @keysMap[key].each do |x| %>
         <tr>
-        <td><%= check_box_tag("x_"+key,x,false) %><%= label_tag(:line, "#{x}") %> </td>
-        <td><%= check_box_tag("y_"+key,x,false) %><%= label_tag(:line, "#{x}") %> </td>
+        <td><%= check_box_tag("x_#{x}_"+key,1,false) %><%= label_tag(:line, "#{x}") %> </td>
+        <td><%= check_box_tag("y_#{x}_"+key,1,false) %><%= label_tag(:line, "#{x}") %> </td>
         </tr>
        
     <% end %>
