@@ -3,8 +3,33 @@ class GraphsController < ApplicationController
   def index
 
   	@passedid = params[:id]  
+    map = Hash.new
+    map['Car']= [
+ {"year" => 1997, :make => 'Ford', :model => 'E350', :description => 'ac, abs, moon', :price => 3000.00},
+ {:year => 1999, :make => 'Chevy', :model => 'Venture "Extended Edition"', :description => nil, :price => 4900.00},
+ {:year => 1999, :make => 'Chevy', :model => 'Venture "Extended Edition, Very Large"', :description => nil, :price => 5000.00},
+ {"year" => 1996, :make => 'Jeep', :model => 'Grand Cherokee', :description => "MUST SELL!\nair, moon roof, loaded", :price => 4799.00}
+] 
+    
+    map['Truck']= [
+ {"year" => 1997, :make => 'Ford', :model => 'E350', :description => 'ac, abs, moon', :price => 3000.00},
+ {:year => 1999, :make => 'Chevy', :model => 'Venture "Extended Edition"', :description => nil, :price => 4900.00},
+ {:year => 1999, :make => 'Chevy', :model => 'Venture "Extended Edition, Very Large"', :description => nil, :price => 5000.00},
+ {"year" => 1996, :make => 'Jeep', :model => 'Grand Cherokee', :description => "MUST SELL!\nair, moon roof, loaded", :price => 4799.00}
+] 
 
+  @keysMap=Hash.new
+  map.each do |key, array|
+  	flash[:notice]="#{key}"
+  	@keysMap[key]=map[key][0].keys
 
+  	# 
+
+  	# map[key].each do |keys, arrays|
+  	# 	flash[:notice]="#{keys.keys}"
+  	# end
+  	# flash[:notice]="#{keysMap[key]}"
+  end
   end
   def new
   	#This controller will be contain the parser code 

@@ -1,4 +1,4 @@
-<br />
+<!-- <br />
 <br />
 <br />
 <br />
@@ -11,4 +11,33 @@
 <br />
 <br />
 <br />
-<br />
+<br /> -->
+
+<h1>Chart</h1> 
+<%= form_tag("/graphs/new", method:"get") do |f| %>
+
+
+<% @keysMap.each do |key, array| %>
+    <%= radio_button_tag(key,1,true) %><%= label_tag(:line, "#{key}") %>
+    <table>
+    <th> X Axis </th> <th> Y Axis </th>
+    <% @keysMap[key].each do |x| %>
+        <tr>
+        <td><%= check_box_tag(x,1,true) %><%= label_tag(:line, "#{x}") %> </td>
+        <td><%= check_box_tag(x,1,true) %><%= label_tag(:line, "#{x}") %> </td>
+        </tr>
+       
+    <% end %>
+    
+    </table>  
+    <%end %>
+
+<%= submit_tag(" Make Graph")%>
+
+<% end %>
+
+    
+
+
+
+
