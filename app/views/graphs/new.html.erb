@@ -1,0 +1,47 @@
+<h1>Chart</h1>
+<table>
+<tr><td><%= check_box_tag(:bar,1,true) %><%= label_tag(:bar, "Bar Graph") %></td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><%= check_box_tag(:line,1,true) %><%= label_tag(:line, "Line Graph") %></td></tr>
+</table>
+<table>
+<td>
+<div id="Bar_Chart_div" >
+<p>
+ <%= high_chart("chart", @chart) %>
+</p>
+</div>
+</td><td>
+<div id="Line_Chart_div" >
+<p>
+ <%= high_chart("line_chart", @line_chart) %>
+</p>
+</div>
+</td>
+</table>
+
+
+
+<script type="text/javascript">
+	var checkbox = document.getElementById('line');
+  	var details_div = document.getElementById('Line_Chart_div');
+  checkbox.onchange = function() {
+     if(this.checked) {
+       details_div.style['display'] = 'block';
+     } else {
+       details_div.style['display'] = 'none';
+     }
+  };
+
+  	var checkbox1 = document.getElementById('bar');
+  	var details_div1 = document.getElementById('Bar_Chart_div');
+  checkbox1.onchange = function() {
+     if(this.checked) {
+       details_div1.style['display'] = 'block';
+     } else {
+       details_div1.style['display'] = 'none';
+     }
+  };
+</script>
+
+

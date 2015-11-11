@@ -1,5 +1,12 @@
 class GraphsController < ApplicationController
+
   def index
+
+  	@passedid = params[:id]  
+
+
+  end
+  def new
   	#This controller will be contain the parser code 
   	# and the logic for displaying different types of tables
   	id = params[:id]
