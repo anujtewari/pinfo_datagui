@@ -14,17 +14,19 @@
 <br /> -->
 
 <h1>Chart</h1> 
-<%= form_tag("/graphs/new", method:"get") do |f| %>
+<%= form_tag("/graphs/new?id=#{@passedid}", method:"post") do |f| %>
 
+<% xaxis = Array.new; yaxis = Array.new %>
+ 
 
 <% @keysMap.each do |key, array| %>
-    <%= radio_button_tag(key,1,true) %><%= label_tag(:line, "#{key}") %>
+    <%= radio_button_tag("graph",key,true) %><%= label_tag(:line, "#{key}") %>
     <table>
     <th> X Axis </th> <th> Y Axis </th>
     <% @keysMap[key].each do |x| %>
         <tr>
-        <td><%= check_box_tag(x,1,true) %><%= label_tag(:line, "#{x}") %> </td>
-        <td><%= check_box_tag(x,1,true) %><%= label_tag(:line, "#{x}") %> </td>
+        <td><%= check_box_tag("x_"+key,x,false) %><%= label_tag(:line, "#{x}") %> </td>
+        <td><%= check_box_tag("y_"+key,x,false) %><%= label_tag(:line, "#{x}") %> </td>
         </tr>
        
     <% end %>
