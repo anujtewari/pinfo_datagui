@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  match "graphs/new", to: "graphs#new", via: "post"
+  
   resources :graphs
 
 
