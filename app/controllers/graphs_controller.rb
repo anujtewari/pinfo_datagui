@@ -34,7 +34,6 @@ class GraphsController < ApplicationController
     varname = "initialized"
     
     if map.has_key?(graphName) then
-      flash[:notice] = graphName
       fieldsList = map[graphName][0].keys      
       fieldsList.each do |field|       
         varname = "y_"+"#{field}" +"_"+graphName
@@ -56,41 +55,53 @@ class GraphsController < ApplicationController
     # Y axis is in yAxis array
     # graph name is in graphName 
 
-    flash[:notice] = " " + "#{xaxisName}" + "  " + "#{yAxis}" + " " + "#{graphName}" 
-  	 	
-  	
+		parseResult = parseCSV(path)
+		graphCategory = graphName
+		xAxis = xaxisName
+		yAxis = yAxis
+		# yAxis = ['BeforeBreakfast','AfterBreakfast', 'BeforeLunch', 'AfterLunch', 'BeforeDinner', 'AfterDinner' ]
 
-	
 
-	@chart = LazyHighCharts::HighChart.new('graph') do |f|
-	  f.title({ :text=>"Diabetes Results"})
- 	  f.options[:xAxis][:categories] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday']
- 	  f.options[:yAxis][:title][:text] = '(in mg/dl)'
-	  #f.labels(:items=>[:html=>"Diabetes Value", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ]) 
-	  # f.series(:type=> 'column',:name=> 'Before Breakfast',:data=> data[1])
-	  # f.series(:type=> 'column',:name=> 'After Breakfast',:data=> data[2])
-	  # f.series(:type=> 'column',:name=> 'Before Lunch',:data=> data[3])
-	  # f.series(:type=> 'column',:name=> 'After Lunch',:data=> data[4])
-	  # f.series(:type=> 'column',:name=> 'Before Dinner', :data=> data[5])
-	  # f.series(:type=> 'column',:name=> 'After Dinner', :data=> data[6])
-	  # f.series(:type=> 'line',:name=> 'Average', :data=> average)
+		xAxisCategories = []
+		for i in 0..parseResult[graphCategory].length-1
+			xAxisCategories.push(parseResult[graphCategory][i][xAxis])
+		end
 
-	 
-	end 
+		yAxisData = {}
+		for i in 0..yAxis.length-1
+			for j in 0..parseResult[graphCategory].length - 1
+				if yAxisData.has_key?(yAxis[i])
+					yAxisData[yAxis[i]].push(parseResult[graphCategory][j][yAxis[i]].to_i)
+				else
+					yAxisData[yAxis[i]] = []
+					yAxisData[yAxis[i]].push(parseResult[graphCategory][j][yAxis[i]].to_i)
+				end
+			end
+
+		end
+
+		@chart = LazyHighCharts::HighChart.new('graph') do |f|
+			f.title({ :text=>"Diabetes Results"})
+			f.options[:xAxis][:categories] = xAxisCategories
+			f.options[:yAxis][:title][:text] = '(in mg/dl)'
+			#f.labels(:items=>[:html=>"Diabetes Value", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ])
+			for i in 0..yAxis.length-1
+				f.series(:type=> 'column',:name=> yAxis[i],:data=> yAxisData[yAxis[i]])
+			end
+			#f.series(:type=> 'line',:name=> 'Average', :data=> average)
+
+
+		end
 
 
 	@line_chart = LazyHighCharts::HighChart.new('graph') do |f|
 	  f.title({ :text=>"Diabetes Results"})
- 	  f.options[:xAxis][:categories] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday','Sunday']
+ 	  f.options[:xAxis][:categories] = xAxisCategories
  	  f.options[:yAxis][:title][:text] = '(in mg/dl)'
-	  #f.labels(:items=>[:html=>"Diabetes Value", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ]) 
-	  # f.series(:type=> 'line',:name=> 'Before Breakfast',:data=> data[1])
-	  # f.series(:type=> 'line',:name=> 'After Breakfast',:data=> data[2])
-	  # f.series(:type=> 'line',:name=> 'Before Lunch',:data=> data[3])
-	  # f.series(:type=> 'line',:name=> 'After Lunch',:data=> data[4])
-	  # f.series(:type=> 'line',:name=> 'Before Dinner', :data=> data[5])
-	  # f.series(:type=> 'line',:name=> 'After Dinner', :data=> data[6])
-	  
+		f.labels(:items=>[:html=>"Diabetes Value", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ])
+		for i in 0..yAxis.length-1
+			f.series(:type=> 'line',:name=> yAxis[i],:data=> yAxisData[yAxis[i]])
+		end
   end
 
 end
