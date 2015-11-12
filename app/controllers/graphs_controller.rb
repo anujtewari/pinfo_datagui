@@ -30,7 +30,7 @@ class GraphsController < ApplicationController
     
     graphName = params[:graph];
     yAxis = Array.new
-    xaxisName = "initialized" 
+    xaxisName = params[:xaxis]; 
     varname = "initialized"
     
     if map.has_key?(graphName) then
@@ -43,10 +43,6 @@ class GraphsController < ApplicationController
           yAxis.push(field)
         end
 
-        varname = "x_" + "#{field}"  + "_" + graphName
-        if params[varname] == "1" then
-          xaxisName = field          
-        end       
       end
     end   
     
