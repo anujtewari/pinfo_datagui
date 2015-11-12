@@ -19,21 +19,52 @@ class GraphsController < ApplicationController
 ] 
 
   @keysMap=Hash.new
-  map.each do |key, array|
-  	flash[:notice]="#{key}"
+  map.each do |key, array|  	
   	@keysMap[key]=map[key][0].keys
-
-  	# 
-
-  	# map[key].each do |keys, arrays|
-  	# 	flash[:notice]="#{keys.keys}"
-  	# end
-  	# flash[:notice]="#{keysMap[key]}"
   end
+  
   end
+
   def new
   	#This controller will be contain the parser code 
   	# and the logic for displaying different types of tables
+    
+    #logic of getting X Y axis rows and columns 
+    map = Hash.new
+    map['Car']= [
+    {"year" => 1997, :make => 'Ford', :model => 'E350', :description => 'ac, abs, moon', :price => 3000.00},
+    {:year => 1999, :make => 'Chevy', :model => 'Venture "Extended Edition"', :description => nil, :price => 4900.00},
+    {:year => 1999, :make => 'Chevy', :model => 'Venture "Extended Edition, Very Large"', :description => nil, :price => 5000.00},
+    {"year" => 1996, :make => 'Jeep', :model => 'Grand Cherokee', :description => "MUST SELL!\nair, moon roof, loaded", :price => 4799.00}
+    ] 
+    
+    graphName = params[:graph];
+    yAxis = Array.new
+    xaxisName = "initialized" 
+    varname = "initialized"
+    
+    if map.has_key?(graphName) then
+      fieldsList = map[graphName][0].keys      
+      fieldsList.each do |field|       
+        varname = "y_"+"#{field}" +"_"+graphName
+        
+        flash[:notice]=params[varname]
+        if params[varname] == "1" then          
+          yAxis.push(field)
+        end
+
+        varname = "x_" + "#{field}"  + "_" + graphName
+        if params[varname] == "1" then
+          xaxisName = field          
+        end       
+      end
+    end   
+    
+    #logic of getting X Y axis ends here
+    # X axis is in xaxisName
+    # Y axis is in yAxis array
+    # graph name is in graphName
+    
   	id = params[:id]
   	path = File.expand_path("../../../public" + id, __FILE__)  	
   	data = Hash.new
