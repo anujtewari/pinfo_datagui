@@ -9,7 +9,7 @@ class GraphsController < ApplicationController
 
     map = parseCSV(path)
     
-
+    
   @keysMap=Hash.new
   map.each do |key, array|  	
   	@keysMap[key]=map[key][0].keys
@@ -37,8 +37,7 @@ class GraphsController < ApplicationController
       fieldsList = map[graphName][0].keys      
       fieldsList.each do |field|       
         varname = "y_"+"#{field}" +"_"+graphName
-        
-        flash[:notice]=params[varname]
+
         if params[varname] == "1" then          
           yAxis.push(field)
         end
@@ -77,10 +76,13 @@ class GraphsController < ApplicationController
 		end
 
 		@chart = LazyHighCharts::HighChart.new('graph') do |f|
-			f.title({ :text=>"Diabetes Results"})
+			f.title({ :text=>"Bar Chart"})
 			f.options[:xAxis][:categories] = xAxisCategories
 			f.options[:yAxis][:title][:text] = '(in mg/dl)'
 			#f.labels(:items=>[:html=>"Diabetes Value", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ])
+			if xAxisCategories.length > 7
+					f.options[:xAxis][:labels] = { rotation: -45}
+			end
 			for i in 0..yAxis.length-1
 				f.series(:type=> 'column',:name=> yAxis[i],:data=> yAxisData[yAxis[i]])
 			end
@@ -91,10 +93,12 @@ class GraphsController < ApplicationController
 
 
 	@line_chart = LazyHighCharts::HighChart.new('graph') do |f|
-	  f.title({ :text=>"Diabetes Results"})
+	  f.title({ :text=>"Line Chart"})
  	  f.options[:xAxis][:categories] = xAxisCategories
  	  f.options[:yAxis][:title][:text] = '(in mg/dl)'
-		f.labels(:items=>[:html=>"Diabetes Value", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ])
+    if xAxisCategories.length > 7
+      f.options[:xAxis][:labels] = { rotation: -45}
+    end
 		for i in 0..yAxis.length-1
 			f.series(:type=> 'line',:name=> yAxis[i],:data=> yAxisData[yAxis[i]])
 		end
