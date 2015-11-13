@@ -9,7 +9,7 @@ class GraphsController < ApplicationController
 
     map = parseCSV(path)
     
-    
+
   @keysMap=Hash.new
   map.each do |key, array|  	
   	@keysMap[key]=map[key][0].keys
@@ -66,10 +66,10 @@ class GraphsController < ApplicationController
 		for i in 0..yAxis.length-1
 			for j in 0..parseResult[graphCategory].length - 1
 				if yAxisData.has_key?(yAxis[i])
-					yAxisData[yAxis[i]].push(parseResult[graphCategory][j][yAxis[i]].to_i)
+					yAxisData[yAxis[i]].push(parseResult[graphCategory][j][yAxis[i]].to_f)
 				else
 					yAxisData[yAxis[i]] = []
-					yAxisData[yAxis[i]].push(parseResult[graphCategory][j][yAxis[i]].to_i)
+					yAxisData[yAxis[i]].push(parseResult[graphCategory][j][yAxis[i]].to_f)
 				end
 			end
 
@@ -80,7 +80,21 @@ class GraphsController < ApplicationController
 			f.options[:xAxis][:categories] = xAxisCategories
 			f.options[:yAxis][:title][:text] = '(in mg/dl)'
 			#f.labels(:items=>[:html=>"Diabetes Value", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ])
-			if xAxisCategories.length > 7
+      f.options[:tooltip] = {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+              '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+          footerFormat: '</table>',
+          shared: true,
+          useHTML: true
+      }
+      f.options[:plotOptions] =  {
+          column: {
+              pointPadding: 0.1,
+              borderWidth: 0
+          }
+      }
+      if xAxisCategories.length > 7
 					f.options[:xAxis][:labels] = { rotation: -45}
 			end
 			for i in 0..yAxis.length-1
@@ -96,6 +110,13 @@ class GraphsController < ApplicationController
 	  f.title({ :text=>"Line Chart"})
  	  f.options[:xAxis][:categories] = xAxisCategories
  	  f.options[:yAxis][:title][:text] = '(in mg/dl)'
+    f.options[:plotOptions]= {
+        line: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    }
     if xAxisCategories.length > 7
       f.options[:xAxis][:labels] = { rotation: -45}
     end
