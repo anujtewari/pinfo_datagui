@@ -26,15 +26,15 @@ class GraphsController < ApplicationController
     id = params[:id]
     path = File.expand_path("../../../public" + id, __FILE__) 
 
-    map = parseCSV(path)     
+    parserdCSV = parseCSV(path)
     
     graphName = params[:graph];
     yAxis = Array.new
     xaxisName = params[:xaxis]; 
     varname = "initialized"
     
-    if map.has_key?(graphName) then
-      fieldsList = map[graphName][0].keys      
+    if parserdCSV.has_key?(graphName) then
+      fieldsList = parserdCSV[graphName][0].keys
       fieldsList.each do |field|       
         varname = "y_"+"#{field}" +"_"+graphName
 
@@ -74,10 +74,39 @@ class GraphsController < ApplicationController
 
 		end
 
-		@chart = LazyHighCharts::HighChart.new('graph') do |f|
-			f.title({ :text=>"Bar Chart"})
-			f.options[:xAxis][:categories] = xAxisCategories
-			f.options[:yAxis][:title][:text] = '(in mg/dl)'
+    createBarChart(xAxisCategories, yAxis, yAxisData)
+    #createLineChart(xAxisCategories, yAxis, yAxisData)
+
+end
+
+  #Method to create line chart
+  def createLineChart(xAxisCategories, yAxis, yAxisData)
+    @line_chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title({:text => "Line Chart"})
+      f.options[:xAxis][:categories] = xAxisCategories
+      f.options[:yAxis][:title][:text] = '(in mg/dl)'
+      f.options[:plotOptions]= {
+          line: {
+              dataLabels: {
+                  enabled: true
+              }
+          }
+      }
+      if xAxisCategories.length > 7
+        f.options[:xAxis][:labels] = {rotation: -45}
+      end
+      for i in 0..yAxis.length-1
+        f.series(:type => 'line', :name => yAxis[i], :data => yAxisData[yAxis[i]])
+      end
+    end
+  end
+
+  #Method to create bar chart
+  def createBarChart(xAxisCategories, yAxis, yAxisData)
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title({:text => "Bar Chart"})
+      f.options[:xAxis][:categories] = xAxisCategories
+      f.options[:yAxis][:title][:text] = '(in mg/dl)'
       f.options[:tooltip] = {
           headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
           pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
@@ -86,46 +115,51 @@ class GraphsController < ApplicationController
           shared: true,
           useHTML: true
       }
-      f.options[:plotOptions] =  {
+      f.options[:plotOptions] = {
           column: {
               pointPadding: 0.1,
               borderWidth: 0
           }
       }
       if xAxisCategories.length > 10
-					f.options[:xAxis][:labels] = { rotation: -45}
-			end
-			for i in 0..yAxis.length-1
-				f.series(:type=> 'column',:name=> yAxis[i],:data=> yAxisData[yAxis[i]])
-			end
-			#f.series(:type=> 'line',:name=> 'Average', :data=> average)
+        f.options[:xAxis][:labels] = {rotation: -45}
+      end
+      for i in 0..yAxis.length-1
+        f.series(:type => 'column', :name => yAxis[i], :data => yAxisData[yAxis[i]])
+      end
 
 
-		end
-
-
-	@line_chart = LazyHighCharts::HighChart.new('graph') do |f|
-	  f.title({ :text=>"Line Chart"})
- 	  f.options[:xAxis][:categories] = xAxisCategories
- 	  f.options[:yAxis][:title][:text] = '(in mg/dl)'
-    f.options[:plotOptions]= {
-        line: {
-            dataLabels: {
-                enabled: true
-            }
-        }
-    }
-    if xAxisCategories.length > 7
-      f.options[:xAxis][:labels] = { rotation: -45}
     end
-		for i in 0..yAxis.length-1
-			f.series(:type=> 'line',:name=> yAxis[i],:data=> yAxisData[yAxis[i]])
-		end
   end
 
-end
-def show
-end
+  def show
+  end
+
+private
+  def parseCSV1(path)
+    #data stores the CSV information in the form of a 2D array, each line as an array
+    data = CSV.read(path);
+    header = []
+    result = []
+
+    #To loop through all data
+    for lineNo in 0..data.length - 1
+        temp = {}
+        # traverse through each column of a table
+        for columnNo in 0..data[lineNo].length - 1
+          # if the line is header then push header column value one by one, assuming header is stored at line: 0
+          if lineNo == 0
+            header.push(data[lineNo][columnNo])
+          else
+            temp[header[columnNo]] = data[lineNo][columnNo]
+          end
+        end
+        if lineNo != 0
+          result.push(temp)
+        end
+      end
+    return result
+  end
 
 private
 def parseCSV(path)
