@@ -20,20 +20,31 @@
  
 
 <% @keysMap.each do |key, array| %>
-    <%= radio_button_tag("graph",key,false) %><%= label_tag(:line, "#{key}") %>
-    <div name="xyaxisfields" style="">
-    <table>
-    <th> X Axis </th> <th> Y Axis </th>
+    <%= radio_button_tag("graph",key,false) %><%= label_tag(:line, "#{key}") %> 
+    
+    <table style="align :left">
+    <tr style="align :left"><td style="align :left"> X Axis</td>
+    <td style="align :left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>  <!-- <th> Y Axis </th> -->
+    <td style="align :left"><%= select_tag "xaxis", options_for_select( @keysMap[key],  @keysMap[key][0])   %></td>
+
+    </tr>
+    </table>
+
+    <table style="align :left">
+    <tr style="align :left"><td style="align :left"> Y Axis </td>  
+    <td style="align :left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;</td> 
     <% @keysMap[key].each do |x| %>
-        <tr>
-        <td><%= radio_button_tag("xaxis",x,false) %><%= label_tag(:line, "#{x}") %> </td>
-        <td><%= check_box_tag("y_#{x}_"+key,1,false) %><%= label_tag(:line, "#{x}") %> </td>
-        </tr>
+        
+         <!-- <td><%= radio_button_tag("xaxis",x,false) %><%= label_tag(:line, "#{x}") %> </td> --> 
+         <td style="align :left"><%= check_box_tag("y_#{x}_"+key,1,false) %><%= label_tag(:line, "#{x}") %> </td>
+
+        
        
-    <% end %>
+    <% end %> 
+    </tr>
     
     </table>
-    </div>  
+    <!-- </div> --> 
     <%end %>
 
 <%= submit_tag(" Make Graph")%>
