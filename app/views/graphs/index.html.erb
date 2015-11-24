@@ -12,7 +12,7 @@
 <br />
 <br />
 <br /> -->
-
+<body>
 <h1>Chart</h1> 
 <%= form_tag("/graphs/new?id=#{@passedid}", method:"post") do |f| %>
 
@@ -39,6 +39,15 @@
 <%= submit_tag(" Make Graph")%>
 
 <% end %>
+
+<div style="width:800px; margin:0 auto;" class="alert alert-warning" role="alert" style="text-align: justify;">
+    Choose fields which can be shown together. For example : Red Blood cells and White blood cells count.
+    <br>
+    Never choose fields which don't go together. Like Height and Weight as they have different units. 
+    <br>
+ </div>
+
+</body>
 
 
     
