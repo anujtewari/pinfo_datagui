@@ -54,7 +54,6 @@ class GraphsController < ApplicationController
 		graphCategory = graphName
 		xAxis = xaxisName
 		yAxis = yAxis
-		# yAxis = ['BeforeBreakfast','AfterBreakfast', 'BeforeLunch', 'AfterLunch', 'BeforeDinner', 'AfterDinner' ]
 
 
 		xAxisCategories = []
@@ -79,7 +78,6 @@ class GraphsController < ApplicationController
 			f.title({ :text=>"Bar Chart"})
 			f.options[:xAxis][:categories] = xAxisCategories
 			f.options[:yAxis][:title][:text] = '(in mg/dl)'
-			#f.labels(:items=>[:html=>"Diabetes Value", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ])
       f.options[:tooltip] = {
           headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
           pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
@@ -94,7 +92,7 @@ class GraphsController < ApplicationController
               borderWidth: 0
           }
       }
-      if xAxisCategories.length > 7
+      if xAxisCategories.length > 10
 					f.options[:xAxis][:labels] = { rotation: -45}
 			end
 			for i in 0..yAxis.length-1
