@@ -33,11 +33,17 @@
     <table style="align :left">
     <tr style="align :left"><td style="align :left"> Y Axis </td>  
     <td style="align :left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+    <% flag = 1%>
     <% @keysMap.each do |x| %>
         
          <!-- <td><%= radio_button_tag("xaxis",x,false) %><%= label_tag(:line, "#{x}") %> </td> --> 
-         <td style="align :left"><%= check_box_tag("y_#{x}_default",1,false) %><%= label_tag(:line, "#{x}") %> </td>
-
+         <td style="align :left">
+            <% if flag == 1 then%>
+            <% flag = 0%>
+            <%= check_box_tag("y_#{x}_default",1,false,disabled:true) %><%= label_tag(:line, "#{x}") %> </td>
+            <% else %>
+            <%= check_box_tag("y_#{x}_default",1,false) %><%= label_tag(:line, "#{x}") %> </td>
+            <%end%>
         
        
     <% end %> 
@@ -95,6 +101,30 @@
  </div>
 
 </body>
+
+<script type="text/javascript">
+    var selectXaxis = document.getElementById('xaxis');
+    var details_div = document.getElementById('Line_Chart_div');
+  selectXaxis.onchange = function() {
+    
+    var yAxis = "y_" + selectXaxis.options[selectXaxis.selectedIndex].value + "_default"; 
+    //alert(yAxis);
+
+    var checkBox_list = document.getElementsByTagName('input');
+ 
+    for (var i = 0; i < checkBox_list.length; i++) {
+        var checkbox = checkBox_list[i];
+     
+        if (checkbox.getAttribute('type') == 'checkbox') {
+            console.log("value of checkbo ", checkbox.value)
+            checkbox.disabled = false;
+
+        }
+    } 
+    document.getElementById(yAxis).checked = false; 
+    document.getElementById(yAxis).disabled = true;   
+  };    
+</script>
 
 
     
