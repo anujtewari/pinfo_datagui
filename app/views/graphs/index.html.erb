@@ -99,7 +99,34 @@
     Never choose fields which don't go together. Like Height and Weight as they have different units. 
     <br>
  </div>
+<a href="#dataTable" id="linkToTable">View some data of Parsed CSV</a>
+<br /><br />
+<div class="table" >
+  <table border="1" style="display:none" id="dataTable" >
+    <tr>
+      <% for i in 0..@keysMap.length-1%>
+          <th><%= @keysMap[i] %></th>
+      <% end %>
+    </tr>
 
+    <% @rows.each do |row| %>
+        <tr>
+          <% for j in 0..@keysMap.length-1 %>
+              <td><%= row[@keysMap[j]] %> </td>
+          <% end %>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
+
+<script type="text/javascript">
+  var linktoTable = document.getElementById('linkToTable');
+  var dataTable = document.getElementById('dataTable');
+  linktoTable.onclick = function() {
+    dataTable.style['display'] = 'inline-table';
+  };
+</script>
 </body>
 
 <script type="text/javascript">

@@ -6,10 +6,10 @@
       <%= high_chart("chart", @chart) %>
 </div>
 
-<table border="1" style="width:20%">
-    <caption> Table </caption>
+<table border="1" style="display:inline-table">
+    <caption> <b>Table</b> </caption>
     <% for i in 0..@tableHeadings.length-1%>
-      <th style="background-color:gray"><%= @tableHeadings[i] %></th>
+      <th style="background-color:lightgrey"><%= @tableHeadings[i] %></th>
     <% end %>    
     <% @rows.each do |row| %>
       <tr>

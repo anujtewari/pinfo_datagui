@@ -6,6 +6,11 @@ class GraphsController < ApplicationController
     dataArray = parseCSV(path)
     @keysMap=Array.new
     @keysMap=dataArray[0].keys
+    if dataArray.length > 5
+      @rows = dataArray[0,4]
+    else
+      @rows = dataArray
+    end
   end
   
   def new
