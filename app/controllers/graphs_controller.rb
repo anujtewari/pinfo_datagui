@@ -1,9 +1,14 @@
 class GraphsController < ApplicationController
 
   def index
-  	@passedid = params[:id]
-    path = File.expand_path("../../../public" + @passedid, __FILE__)
-    dataArray = parseCSV(path)
+    if(params.has_key?(:id))
+    	@passedid = params[:id]
+      path = File.expand_path("../../../public" + @passedid, __FILE__)
+      dataArray = parseCSV(path)
+    else
+      dataArray = parseData()
+    end
+
     @keysMap=Array.new
     @keysMap=dataArray[0].keys
     if dataArray.length > 5
@@ -16,11 +21,13 @@ class GraphsController < ApplicationController
   def new
   	#This controller will be contain the parser code 
   	# and the logic for displaying different types of tables
-
-    id = params[:id]
-    path = File.expand_path("../../../public" + id, __FILE__) 
-
-    parsedResult = parseCSV(path)
+    if(params.has_key?(:id) and params[:id].nil?)
+      id = params[:id]
+      path = File.expand_path("../../../public" + id, __FILE__) 
+      parsedResult = parseCSV(path)
+    else
+      parsedResult = parseData()
+    end
 
     xAxisHeadings = params[:xaxis];
     yAxisHeadings = getYAxisHeadings(parsedResult)
@@ -179,6 +186,33 @@ private
       end
     return result
   end
+
+  private
+  def parseData()
+    #Read the data from session and return 2d array
+    data = session[:surveyObject];
+    header = []
+    result = []
+    #To loop through all data
+    for lineNo in 0..data.length - 1
+        temp = {}
+        # traverse through each column of a table
+        for columnNo in 0..data[lineNo].length - 1
+          # if the line is header then push header column value one by one, assuming header is stored at line: 0
+          if lineNo == 0
+            header.push(data[lineNo][columnNo])
+          else
+            temp[header[columnNo]] = data[lineNo][columnNo]
+          end
+        end
+        if lineNo != 0
+          result.push(temp)
+        end
+      end
+    return result
+  end
+
+
 
 private
 def parseCSV1(path)

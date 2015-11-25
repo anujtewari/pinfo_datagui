@@ -42,11 +42,17 @@ class SurveysController < ApplicationController
   end
 
   def results    
+   if params[:format] == 'screen'
+      @survey = Survey.find(params[:survey_id])
+      session[:surveyObject] = extractData(@survey)
+      redirect_to url_for(:controller => :graphs, :action => :index)
+    else
     respond_to do |format|
       @survey = Survey.find(params[:survey_id])
       format.html     
       format.csv {send_data to_csv(params[:survey_id]), :filename => @survey.survey_name+' Results '+Time.new.strftime("%m-%d-%Y %H:%M:%S")+".csv"}
-    end    
+    end
+    end     
   end
 
   def questions_order
@@ -95,5 +101,27 @@ class SurveysController < ApplicationController
         csv << answers_list
       end
     end
+  end
+
+  def extractData(survey_id)
+    surveyData = [[]]
+    i=0;
+    questions = Question.where(:survey_id => survey_id)
+    questions.each do |question|
+        surveyData[0][i] = question.question
+        i=i+1
+    end
+    i=1
+    response_groups = ResponseGroup.where(:survey_id => survey_id)
+    response_groups.each do |response_group|
+      responses = Response.where(:response_group => response_group.id)
+      answers_list = []
+      responses.each do |response|
+          answers_list << response.answer_text
+      end
+          surveyData[i] = answers_list
+          i=i+1
+    end
+    return surveyData
   end
 end
