@@ -1,22 +1,11 @@
 class GraphsController < ApplicationController
 
   def index
-
   	@passedid = params[:id]
-
-
     path = File.expand_path("../../../public" + @passedid, __FILE__)
-
-    map = parseCSV(path)
-
-    dataArray =parseCSV1(path)
-    
-
-  @keysMap=Array.new
-    
-  	@keysMap=dataArray[0].keys
-  
-
+    dataArray = parseCSV(path)
+    @keysMap=Array.new
+    @keysMap=dataArray[0].keys
   end
   
   def new
@@ -48,7 +37,6 @@ class GraphsController < ApplicationController
     graphName = "default"
 
     fieldsList = parsedResult[0].keys
-    flash[:notice] = fieldsList
 
     fieldsList.each do |field|
       fieldName = "y_"+"#{field}" +"_"+graphName
