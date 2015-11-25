@@ -42,8 +42,44 @@
        
     <% end %> 
     </tr>
+    </table>
+    
+
+    <table style="align :left">
+    <tr style="align :left"><td style="align :left"> Label for X-axis </td>
+    <td style="align :left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="align :left"><%= text_field_tag 'xUnits',nil, placeholder:'X-Axis Label' %></td>
+
+
+
     
     </table>
+
+    </table>
+
+    <table style="align :left">
+    <tr style="align :left"><td style="align :left"> Label for Y-axis </td>
+    <td style="align :left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="align :left"><%= text_field_tag 'yUnits',nil, placeholder:'Y-Axis Label' %></td>
+
+
+
+    
+    </table>
+
+    <table style="align :left">
+    <tr style="align :left"><td style="align :left"> Graph Type </td>
+    <td style="align :left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td style="align :left"><%= select_tag "graphType", options_for_select( ["Line Graph", "Bar Graph"]  ,"Line Graph")   %></td>
+
+
+
+    
+    </table>
+
+
+
+
     <!-- </div> --> 
    
 
