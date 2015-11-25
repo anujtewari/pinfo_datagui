@@ -6,7 +6,36 @@
       <%= high_chart("chart", @chart) %>
 </div>
 
-
+<table border="1" style="width:20%">
+    <% for i in 0..@tableHeadings.length-1%>
+      <th><%= @tableHeadings[i] %></th>
+    <% end %>    
+    <% @rows.each do |row| %>
+      <tr>
+        <% for j in 0..@tableHeadings.length-1 %>        
+          <td><%= row[@tableHeadings[j]] %> </td>
+        <% end %>  
+      </tr>       
+    <% end %>    
+</table> 
+<!--   <tr>
+    <td>Jan </td>
+    <td>15</td>
+  </tr>
+  <tr>
+    <td>Feb </td>
+    <td>18</td>
+  </tr>
+  <tr>
+    <td>Mar </td>
+    <td>19</td>
+  </tr>
+  <tr>
+    <td>Apr </td>
+    <td>20</td>
+  </tr> 
+</table>
+ -->
 
 
 

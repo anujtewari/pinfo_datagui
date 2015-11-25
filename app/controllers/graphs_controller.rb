@@ -16,10 +16,11 @@ class GraphsController < ApplicationController
     path = File.expand_path("../../../public" + id, __FILE__) 
 
     parsedResult = parseCSV(path)
-
+    @rows = parsedResult
     xAxisHeadings = params[:xaxis];
-    yAxisHeadings = getYAxisHeadings(parsedResult)
 
+    yAxisHeadings = getYAxisHeadings(parsedResult)
+    @tableHeadings = [xAxisHeadings] + yAxisHeadings
     #Getting data for both axis
     xAxisCategories = getXAxisCategories(parsedResult, xAxisHeadings)
     yAxisData = getYAxisData(parsedResult, yAxisHeadings)
