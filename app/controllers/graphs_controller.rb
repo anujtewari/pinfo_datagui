@@ -52,6 +52,21 @@ class GraphsController < ApplicationController
     end
 
   end
+#Returns YAxis Heading selected on previous page
+  def getYAxisHeadings(parsedResult)
+    yAxisHeadings = Array.new
+    fieldName = "initialized"
+    graphName = "default"
 
+    fieldsList = parsedResult[0].keys
+
+    fieldsList.each do |field|
+      fieldName = "y_"+"#{field}" +"_"+graphName
+      if params[fieldName] == "1" then
+        yAxisHeadings.push(field)
+      end
+    end
+    return yAxisHeadings
+  end
 
 end
