@@ -22,64 +22,69 @@ class GraphsController < ApplicationController
   def new
   	#This controller will be contain the parser code 
   	# and the logic for displaying different types of tables
-    
-    #logic of getting X Y axis rows and columns 
 
     id = params[:id]
     path = File.expand_path("../../../public" + id, __FILE__) 
 
-    parserdCSV = parseCSV1(path)
-    
-    graphName = "default";
-    yAxis = Array.new
-    xaxisName = params[:xaxis]; 
-    varname = "initialized"
-    
-    
-      fieldsList = parserdCSV[0].keys
-      fieldsList.each do |field|       
-        varname = "y_"+"#{field}" +"_"+graphName
+    parsedResult = parseCSV(path)
 
-        if params[varname] == "1" then          
-          yAxis.push(field)
-        end
+    xAxisHeadings = params[:xaxis];
+    yAxisHeadings = getYAxisHeadings(parsedResult)
 
+    #Getting data for both axis
+    xAxisCategories = getXAxisCategories(parsedResult, xAxisHeadings)
+    yAxisData = getYAxisData(parsedResult, yAxisHeadings)
+
+    #Creating chart
+    createBarChart(xAxisCategories, yAxisHeadings, yAxisData)
+    #createLineChart(xAxisCategories, yAxisHeadings, yAxisData)
+
+  end
+
+  #Returns YAxis Heading selected on previous page
+  def getYAxisHeadings(parsedResult)
+    yAxisHeadings = Array.new
+    fieldName = "initialized"
+    graphName = "default"
+
+    fieldsList = parsedResult[0].keys
+    flash[:notice] = fieldsList
+
+    fieldsList.each do |field|
+      fieldName = "y_"+"#{field}" +"_"+graphName
+      if params[fieldName] == "1" then
+        yAxisHeadings.push(field)
       end
-     
-    
-    #logic of getting X Y axis ends here
-    # X axis is in xaxisName
-    # Y axis is in yAxis array
-    # graph name is in graphName 
-
-		parseResult = parseCSV1(path)
-		graphCategory = graphName
-		xAxis = xaxisName
-		yAxis = yAxis
+    end
+    return yAxisHeadings
+  end
 
 
-		xAxisCategories = []
-		for i in 0..parseResult.length-1
-			xAxisCategories.push(parseResult[i][xAxis])
-		end
+  #To fetch xAxisCategories (XAxisData) from parseResult based on the heading in array: xAxisHeadings
+  def getXAxisCategories(parseResult, xAxis)
+    xAxisCategories = []
+    for i in 0..parseResult.length-1
+      xAxisCategories.push(parseResult[i][xAxis])
+    end
+    xAxisCategories
+  end
 
-		yAxisData = {}
-		for i in 0..yAxis.length-1
-			for j in 0..parseResult.length - 1
-				if yAxisData.has_key?(yAxis[i])
-					yAxisData[yAxis[i]].push(parseResult[j][yAxis[i]].to_f)
-				else
-					yAxisData[yAxis[i]] = []
-					yAxisData[yAxis[i]].push(parseResult[j][yAxis[i]].to_f)
-				end
-			end
+  #To fetch YAxisData from parseResult based on the heading in array: yAxisHeadings
+  def getYAxisData(parseResult, yAxis)
+    yAxisData = {}
+    for i in 0..yAxis.length-1
+      for j in 0..parseResult.length - 1
+        if yAxisData.has_key?(yAxis[i])
+          yAxisData[yAxis[i]].push(parseResult[j][yAxis[i]].to_f)
+        else
+          yAxisData[yAxis[i]] = []
+          yAxisData[yAxis[i]].push(parseResult[j][yAxis[i]].to_f)
+        end
+      end
 
-		end
-
-    createBarChart(xAxisCategories, yAxis, yAxisData)
-    #createLineChart(xAxisCategories, yAxis, yAxisData)
-
-end
+    end
+    yAxisData
+  end
 
   #Method to create line chart
   def createLineChart(xAxisCategories, yAxis, yAxisData)
@@ -138,7 +143,7 @@ end
   end
 
 private
-  def parseCSV1(path)
+  def parseCSV(path)
     #data stores the CSV information in the form of a 2D array, each line as an array
     data = CSV.read(path);
     header = []
@@ -164,7 +169,7 @@ private
   end
 
 private
-def parseCSV(path)
+def parseCSV1(path)
  #data stores the CSV information in the form of a 2D array, each line as an array
  data = CSV.read(path);
  multipleCSVData = FALSE
