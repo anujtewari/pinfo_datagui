@@ -52,7 +52,7 @@ class GraphsController < ApplicationController
     end
 
   end
-#
+#Returns YAxis Heading selected on previous page
   def getYAxisHeadings(parsedResult)
     yAxisHeadings = Array.new
     fieldName = "initialized"
@@ -68,5 +68,29 @@ class GraphsController < ApplicationController
     end
     return yAxisHeadings
   end
+#To fetch xAxisCategories (XAxisData) from parseResult based on the heading in array: xAxisHeadings
+  def getXAxisCategories(parseResult, xAxis)
+    xAxisCategories = []
+    for i in 0..parseResult.length-1
+      xAxisCategories.push(parseResult[i][xAxis])
+    end
+    xAxisCategories
+  end
 
+#To fetch YAxisData from parseResult based on the heading in array: yAxisHeadings
+  def getYAxisData(parseResult, yAxis)
+    yAxisData = {}
+    for i in 0..yAxis.length-1
+      for j in 0..parseResult.length - 1
+        if yAxisData.has_key?(yAxis[i])
+          yAxisData[yAxis[i]].push(parseResult[j][yAxis[i]].to_f)
+        else
+          yAxisData[yAxis[i]] = []
+          yAxisData[yAxis[i]].push(parseResult[j][yAxis[i]].to_f)
+        end
+      end
+
+    end
+    yAxisData
+  end
 end
