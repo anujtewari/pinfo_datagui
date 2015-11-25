@@ -52,7 +52,7 @@ class GraphsController < ApplicationController
     end
 
   end
-#Returns YAxis Heading selected on previous page
+#
   def getYAxisHeadings(parsedResult)
     yAxisHeadings = Array.new
     fieldName = "initialized"
