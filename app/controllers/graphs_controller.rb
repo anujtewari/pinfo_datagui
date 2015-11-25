@@ -16,18 +16,28 @@ class GraphsController < ApplicationController
     path = File.expand_path("../../../public" + id, __FILE__) 
 
     parsedResult = parseCSV(path)
-    @rows = parsedResult
-    xAxisHeadings = params[:xaxis];
 
+    xAxisHeadings = params[:xaxis];
     yAxisHeadings = getYAxisHeadings(parsedResult)
+    xAxisLabel    = params[:xUnits]
+    yAsixLabel    = params[:yUnits]
+    typeOfGraph   = params[:graphType]
+
+    #For rows and tableHeadings for displaying table with chart
+    @rows = parsedResult
     @tableHeadings = [xAxisHeadings] + yAxisHeadings
+
+
     #Getting data for both axis
     xAxisCategories = getXAxisCategories(parsedResult, xAxisHeadings)
     yAxisData = getYAxisData(parsedResult, yAxisHeadings)
 
     #Creating chart
-    createBarChart(xAxisCategories, yAxisHeadings, yAxisData)
-    #createLineChart(xAxisCategories, yAxisHeadings, yAxisData)
+    if typeOfGraph == 'Bar Graph'
+      createBarChart(xAxisCategories, yAxisHeadings, yAxisData, xAxisLabel, yAsixLabel)
+    else
+      createLineChart(xAxisCategories, yAxisHeadings, yAxisData, xAxisLabel, yAsixLabel)
+    end
 
   end
 
@@ -76,11 +86,15 @@ class GraphsController < ApplicationController
   end
 
   #Method to create line chart
-  def createLineChart(xAxisCategories, yAxis, yAxisData)
-    @line_chart = LazyHighCharts::HighChart.new('graph') do |f|
+  def createLineChart(xAxisCategories, yAxis, yAxisData, xAxisLabel, yAsixLabel)
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title({:text => "Line Chart"})
       f.options[:xAxis][:categories] = xAxisCategories
-      f.options[:yAxis][:title][:text] = '(in mg/dl)'
+      f.options[:xAxis][:title] = {
+          enabled: true,
+          text: xAxisLabel
+      }
+      f.options[:yAxis][:title][:text] = yAsixLabel
       f.options[:plotOptions]= {
           line: {
               dataLabels: {
@@ -88,7 +102,7 @@ class GraphsController < ApplicationController
               }
           }
       }
-      if xAxisCategories.length > 7
+      if xAxisCategories.length > 10
         f.options[:xAxis][:labels] = {rotation: -45}
       end
       for i in 0..yAxis.length-1
@@ -98,11 +112,15 @@ class GraphsController < ApplicationController
   end
 
   #Method to create bar chart
-  def createBarChart(xAxisCategories, yAxis, yAxisData)
+  def createBarChart(xAxisCategories, yAxis, yAxisData, xAxisLabel, yAsixLabel)
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title({:text => "Bar Chart"})
       f.options[:xAxis][:categories] = xAxisCategories
-      f.options[:yAxis][:title][:text] = '(in mg/dl)'
+      f.options[:xAxis][:title] = {
+                                          enabled: true,
+                                          text: xAxisLabel
+                                          }
+      f.options[:yAxis][:title][:text] = yAsixLabel
       f.options[:tooltip] = {
           headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
           pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
