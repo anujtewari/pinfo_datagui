@@ -8,15 +8,17 @@ class GraphsController < ApplicationController
     path = File.expand_path("../../../public" + @passedid, __FILE__)
 
     map = parseCSV(path)
+
+    dataArray =parseCSV1(path)
     
 
-  @keysMap=Hash.new
-  map.each do |key, array|  	
-  	@keysMap[key]=map[key][0].keys
-  end
+  @keysMap=Array.new
+    
+  	@keysMap=dataArray[0].keys
+  
 
   end
-
+  
   def new
   	#This controller will be contain the parser code 
   	# and the logic for displaying different types of tables
@@ -26,15 +28,15 @@ class GraphsController < ApplicationController
     id = params[:id]
     path = File.expand_path("../../../public" + id, __FILE__) 
 
-    parserdCSV = parseCSV(path)
+    parserdCSV = parseCSV1(path)
     
-    graphName = params[:graph];
+    graphName = "default";
     yAxis = Array.new
     xaxisName = params[:xaxis]; 
     varname = "initialized"
     
-    if parserdCSV.has_key?(graphName) then
-      fieldsList = parserdCSV[graphName][0].keys
+    
+      fieldsList = parserdCSV[0].keys
       fieldsList.each do |field|       
         varname = "y_"+"#{field}" +"_"+graphName
 
@@ -43,32 +45,32 @@ class GraphsController < ApplicationController
         end
 
       end
-    end   
+     
     
     #logic of getting X Y axis ends here
     # X axis is in xaxisName
     # Y axis is in yAxis array
     # graph name is in graphName 
 
-		parseResult = parseCSV(path)
+		parseResult = parseCSV1(path)
 		graphCategory = graphName
 		xAxis = xaxisName
 		yAxis = yAxis
 
 
 		xAxisCategories = []
-		for i in 0..parseResult[graphCategory].length-1
-			xAxisCategories.push(parseResult[graphCategory][i][xAxis])
+		for i in 0..parseResult.length-1
+			xAxisCategories.push(parseResult[i][xAxis])
 		end
 
 		yAxisData = {}
 		for i in 0..yAxis.length-1
-			for j in 0..parseResult[graphCategory].length - 1
+			for j in 0..parseResult.length - 1
 				if yAxisData.has_key?(yAxis[i])
-					yAxisData[yAxis[i]].push(parseResult[graphCategory][j][yAxis[i]].to_f)
+					yAxisData[yAxis[i]].push(parseResult[j][yAxis[i]].to_f)
 				else
 					yAxisData[yAxis[i]] = []
-					yAxisData[yAxis[i]].push(parseResult[graphCategory][j][yAxis[i]].to_f)
+					yAxisData[yAxis[i]].push(parseResult[j][yAxis[i]].to_f)
 				end
 			end
 
