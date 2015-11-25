@@ -93,4 +93,64 @@ class GraphsController < ApplicationController
     end
     yAxisData
   end
+#Method to create line chart
+  def createLineChart(xAxisCategories, yAxis, yAxisData, xAxisLabel, yAsixLabel)
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title({:text => "Line Chart"})
+      f.options[:xAxis][:categories] = xAxisCategories
+      f.options[:xAxis][:title] = {
+          enabled: true,
+          text: xAxisLabel
+      }
+      f.options[:yAxis][:title][:text] = yAsixLabel
+      f.options[:plotOptions]= {
+          line: {
+              dataLabels: {
+                  enabled: true
+              }
+          }
+      }
+      if xAxisCategories.length > 10
+        f.options[:xAxis][:labels] = {rotation: -45}
+      end
+      for i in 0..yAxis.length-1
+        f.series(:type => 'line', :name => yAxis[i], :data => yAxisData[yAxis[i]])
+      end
+    end
+  end
+
+#Method to create bar chart
+  def createBarChart(xAxisCategories, yAxis, yAxisData, xAxisLabel, yAsixLabel)
+    @chart = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title({:text => "Bar Chart"})
+      f.options[:xAxis][:categories] = xAxisCategories
+      f.options[:xAxis][:title] = {
+          enabled: true,
+          text: xAxisLabel
+      }
+      f.options[:yAxis][:title][:text] = yAsixLabel
+      f.options[:tooltip] = {
+          headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+          pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+              '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+          footerFormat: '</table>',
+          shared: true,
+          useHTML: true
+      }
+      f.options[:plotOptions] = {
+          column: {
+              pointPadding: 0.1,
+              borderWidth: 0
+          }
+      }
+      if xAxisCategories.length > 10
+        f.options[:xAxis][:labels] = {rotation: -45}
+      end
+      for i in 0..yAxis.length-1
+        f.series(:type => 'column', :name => yAxis[i], :data => yAxisData[yAxis[i]])
+      end
+
+
+    end
+  end
 end
