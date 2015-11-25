@@ -1,7 +1,7 @@
 class GraphsController < ApplicationController
 
   def index
-    if(params.has_key?(:id))
+    if(params.has_key?(:id) and !params[:id].nil?)
     	@passedid = params[:id]
       path = File.expand_path("../../../public" + @passedid, __FILE__)
       dataArray = parseCSV(path)
@@ -21,7 +21,7 @@ class GraphsController < ApplicationController
   def new
   	#This controller will be contain the parser code 
   	# and the logic for displaying different types of tables
-    if(params.has_key?(:id) and params[:id].nil?)
+    if(params.has_key?(:id) and !params[:id].nil?)
       id = params[:id]
       path = File.expand_path("../../../public" + id, __FILE__) 
       parsedResult = parseCSV(path)
