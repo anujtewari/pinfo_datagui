@@ -153,4 +153,59 @@ class GraphsController < ApplicationController
 
     end
   end
+
+
+  def show
+  end
+
+  private
+  def parseCSV(path)
+    #data stores the CSV information in the form of a 2D array, each line as an array
+    data = CSV.read(path);
+    header = []
+    result = []
+
+    #To loop through all data
+    for lineNo in 0..data.length - 1
+      temp = {}
+      # traverse through each column of a table
+      for columnNo in 0..data[lineNo].length - 1
+        # if the line is header then push header column value one by one, assuming header is stored at line: 0
+        if lineNo == 0
+          header.push(data[lineNo][columnNo])
+        else
+          temp[header[columnNo]] = data[lineNo][columnNo]
+        end
+      end
+      if lineNo != 0
+        result.push(temp)
+      end
+    end
+    return result
+  end
+
+  private
+  def parseData()
+    #Read the data from session and return 2d array
+    data = session[:surveyObject];
+    header = []
+    result = []
+    #To loop through all data
+    for lineNo in 0..data.length - 1
+      temp = {}
+      # traverse through each column of a table
+      for columnNo in 0..data[lineNo].length - 1
+        # if the line is header then push header column value one by one, assuming header is stored at line: 0
+        if lineNo == 0
+          header.push(data[lineNo][columnNo])
+        else
+          temp[header[columnNo]] = data[lineNo][columnNo]
+        end
+      end
+      if lineNo != 0
+        result.push(temp)
+      end
+    end
+    return result
+  end
 end
