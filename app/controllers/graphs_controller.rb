@@ -1,6 +1,7 @@
 class GraphsController < ApplicationController
 
   def index
+    begin
     if(params.has_key?(:id) and (params[:id].length > 0))
     	@passedid = params[:id]
       path = File.expand_path("../../../public" + @passedid, __FILE__)
@@ -16,6 +17,10 @@ class GraphsController < ApplicationController
     else
       @rows = dataArray
     end
+    rescue Exception => exc
+    flash[:notice] = "Survey has not yet been taken by any user."
+    redirect_to url_for(:controller => :surveys, :action => :index)
+  end
   end
   
   def new
