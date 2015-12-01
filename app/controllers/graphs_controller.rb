@@ -57,8 +57,7 @@ class GraphsController < ApplicationController
     end
 
   end
-
-  #Returns YAxis Heading selected on previous page
+#Returns YAxis Heading selected on previous page
   def getYAxisHeadings(parsedResult)
     yAxisHeadings = Array.new
     fieldName = "initialized"
@@ -74,9 +73,7 @@ class GraphsController < ApplicationController
     end
     return yAxisHeadings
   end
-
-
-  #To fetch xAxisCategories (XAxisData) from parseResult based on the heading in array: xAxisHeadings
+#To fetch xAxisCategories (XAxisData) from parseResult based on the heading in array: xAxisHeadings
   def getXAxisCategories(parseResult, xAxis)
     xAxisCategories = []
     for i in 0..parseResult.length-1
@@ -85,7 +82,7 @@ class GraphsController < ApplicationController
     xAxisCategories
   end
 
-  #To fetch YAxisData from parseResult based on the heading in array: yAxisHeadings
+#To fetch YAxisData from parseResult based on the heading in array: yAxisHeadings
   def getYAxisData(parseResult, yAxis)
     yAxisData = {}
     for i in 0..yAxis.length-1
@@ -101,8 +98,7 @@ class GraphsController < ApplicationController
     end
     yAxisData
   end
-
-  #Method to create line chart
+#Method to create line chart
   def createLineChart(xAxisCategories, yAxis, yAxisData, xAxisLabel, yAsixLabel)
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title({:text => "Line Chart"})
@@ -128,15 +124,15 @@ class GraphsController < ApplicationController
     end
   end
 
-  #Method to create bar chart
+#Method to create bar chart
   def createBarChart(xAxisCategories, yAxis, yAxisData, xAxisLabel, yAsixLabel)
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.title({:text => "Bar Chart"})
       f.options[:xAxis][:categories] = xAxisCategories
       f.options[:xAxis][:title] = {
-                                          enabled: true,
-                                          text: xAxisLabel
-                                          }
+          enabled: true,
+          text: xAxisLabel
+      }
       f.options[:yAxis][:title][:text] = yAsixLabel
       f.options[:tooltip] = {
           headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
@@ -163,10 +159,11 @@ class GraphsController < ApplicationController
     end
   end
 
+
   def show
   end
 
-private
+  private
   def parseCSV(path)
     #data stores the CSV information in the form of a 2D array, each line as an array
     data = CSV.read(path);
@@ -175,20 +172,20 @@ private
 
     #To loop through all data
     for lineNo in 0..data.length - 1
-        temp = {}
-        # traverse through each column of a table
-        for columnNo in 0..data[lineNo].length - 1
-          # if the line is header then push header column value one by one, assuming header is stored at line: 0
-          if lineNo == 0
-            header.push(data[lineNo][columnNo])
-          else
-            temp[header[columnNo]] = data[lineNo][columnNo]
-          end
-        end
-        if lineNo != 0
-          result.push(temp)
+      temp = {}
+      # traverse through each column of a table
+      for columnNo in 0..data[lineNo].length - 1
+        # if the line is header then push header column value one by one, assuming header is stored at line: 0
+        if lineNo == 0
+          header.push(data[lineNo][columnNo])
+        else
+          temp[header[columnNo]] = data[lineNo][columnNo]
         end
       end
+      if lineNo != 0
+        result.push(temp)
+      end
+    end
     return result
   end
 
@@ -200,90 +197,89 @@ private
     result = []
     #To loop through all data
     for lineNo in 0..data.length - 1
+      temp = {}
+      # traverse through each column of a table
+      for columnNo in 0..data[lineNo].length - 1
+        # if the line is header then push header column value one by one, assuming header is stored at line: 0
+        if lineNo == 0
+          header.push(data[lineNo][columnNo])
+        else
+          temp[header[columnNo]] = data[lineNo][columnNo]
+        end
+      end
+      if lineNo != 0
+        result.push(temp)
+      end
+    end
+    return result
+  end
+
+  private
+  def parseCSV1(path)
+    #data stores the CSV information in the form of a 2D array, each line as an array
+    data = CSV.read(path);
+    multipleCSVData = FALSE
+    # multipleCSV is true if the CSV contains multiple table of data.
+    if data[0].length != data[1].length and data[0].length == 1
+      multipleCSVData = TRUE
+    end
+    header = []
+    result = []
+    charts = {}
+
+    if multipleCSVData
+      headerLine = 1
+    else
+      headerLine = 0
+    end
+
+    while TRUE
+      for lineNo in headerLine..data.length - 1
+        # break condition when we reach end of the table of data and add 'result' as value and table category as key in 'charts'
+        if data[lineNo].length == 0 or lineNo == data.length
+          if multipleCSVData
+            charts[data[headerLine-1][0]] = result
+          else
+            # if CSV is a single table then, make key as 'default'
+            charts['default'] = result
+          end
+          result = []
+          header = []
+          # move header line to next header of table
+          headerLine = lineNo + 2
+          break
+        end
         temp = {}
         # traverse through each column of a table
         for columnNo in 0..data[lineNo].length - 1
-          # if the line is header then push header column value one by one, assuming header is stored at line: 0
-          if lineNo == 0
+          # if the line is header then push header column value one by one.
+          if lineNo == headerLine
             header.push(data[lineNo][columnNo])
           else
             temp[header[columnNo]] = data[lineNo][columnNo]
           end
         end
-        if lineNo != 0
+        if lineNo != headerLine
           result.push(temp)
         end
       end
-    return result
+
+      if headerLine >= data.length
+        break
+      end
+      # if we reach the end data
+      if  lineNo >= data.length-1
+        if multipleCSVData
+          charts[data[headerLine-1][0]] = result
+        else
+          # if CSV is a single table then, make key as 'default'
+          charts['default'] = result
+        end
+        break
+      end
+    end
+
+    return charts
   end
 
-
-
-private
-def parseCSV1(path)
- #data stores the CSV information in the form of a 2D array, each line as an array
- data = CSV.read(path);
- multipleCSVData = FALSE
- # multipleCSV is true if the CSV contains multiple table of data.
- if data[0].length != data[1].length and data[0].length == 1
-   multipleCSVData = TRUE
- end
- header = []
- result = []
- charts = {}
-
- if multipleCSVData
-   headerLine = 1
- else
-   headerLine = 0
- end
-
- while TRUE
-   for lineNo in headerLine..data.length - 1
-     # break condition when we reach end of the table of data and add 'result' as value and table category as key in 'charts'
-     if data[lineNo].length == 0 or lineNo == data.length
-       if multipleCSVData
-         charts[data[headerLine-1][0]] = result
-       else
-         # if CSV is a single table then, make key as 'default'
-         charts['default'] = result
-       end
-       result = []
-       header = []
-       # move header line to next header of table
-       headerLine = lineNo + 2
-       break
-     end
-     temp = {}
-     # traverse through each column of a table
-     for columnNo in 0..data[lineNo].length - 1
-       # if the line is header then push header column value one by one.
-       if lineNo == headerLine
-         header.push(data[lineNo][columnNo])
-       else
-         temp[header[columnNo]] = data[lineNo][columnNo]
-       end
-     end
-     if lineNo != headerLine
-       result.push(temp)
-     end
-   end
-
-   if headerLine >= data.length
-     break
-   end
-   # if we reach the end data
-   if  lineNo >= data.length-1
-     if multipleCSVData
-       charts[data[headerLine-1][0]] = result
-     else
-       # if CSV is a single table then, make key as 'default'
-       charts['default'] = result
-     end
-     break
-   end
- end
-
- return charts
-end
 end
