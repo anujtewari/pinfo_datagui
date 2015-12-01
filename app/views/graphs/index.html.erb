@@ -18,66 +18,47 @@
 
 <% xaxis = Array.new; yaxis = Array.new %>
  
-
-
-
-    
-    <table style="align :left">
+    <table>
     <tr style="align :left"><td style="align :left"> X Axis</td>
     <td style="align :left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>  <!-- <th> Y Axis </th> -->
     <td style="align :left"><%= select_tag "xaxis", options_for_select( @keysMap,  @keysMap[0])   %></td>
 
     </tr>
-    </table>
+    
 
-    <table style="align :left">
-    <tr style="align :left"><td style="align :left"> Y Axis </td>  
-    <td style="align :left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;</td> 
+    <tr style="align :left"><td style="align :left"> Y Axis </td> 
+    <td> &nbsp; </td> 
     <% flag = 1%>
-    <% @keysMap.each do |x| %>
-        
-         <!-- <td><%= radio_button_tag("xaxis",x,false) %><%= label_tag(:line, "#{x}") %> </td> --> 
-         <td style="align :left">
+    <% @keysMap.each do |x| %>         
+         <td style="float:left; width:20%">
             <% if flag == 1 then%>
             <% flag = 0%>
             <%= check_box_tag("y_#{x}_default",1,false,disabled:true) %><%= label_tag(:line, "#{x}") %> </td>
             <% else %>
             <%= check_box_tag("y_#{x}_default",1,false) %><%= label_tag(:line, "#{x}") %> </td>
             <%end%>
-        
-       
     <% end %> 
     </tr>
-    </table>
+   
     
 
-    <table style="align :left">
     <tr style="align :left"><td style="align :left"> Label for X-axis </td>
     <td style="align :left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td style="align :left"><%= text_field_tag 'xUnits',nil, placeholder:'X-Axis Label' %></td>
+    </tr>
 
-
-
-    
-    </table>
-
-    </table>
-
-    <table style="align :left">
     <tr style="align :left"><td style="align :left"> Label for Y-axis </td>
     <td style="align :left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td style="align :left"><%= text_field_tag 'yUnits',nil, placeholder:'Y-Axis Label' %></td>
 
+    </tr>
 
 
     
-    </table>
-
-    <table style="align :left">
     <tr style="align :left"><td style="align :left"> Graph Type </td>
     <td style="align :left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     <td style="align :left"><%= select_tag "graphType", options_for_select( ["Line Graph", "Bar Graph"]  ,"Line Graph")   %></td>
-
+    </tr>
 
 
     
