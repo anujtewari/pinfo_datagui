@@ -27,7 +27,7 @@ Background:
   Then I should be on the Survey Users Page
   When I follow "user@surveybuilder.com"
   Then I should be on the alloted surveys page for user@surveybuilder.com
-  And I select "3,My Test Survey" from "Survey Name"
+  And I select "9,Blood Cells" from "Survey Name"
   When I press "Add Survey"
   Then I should see "Successfully Added."
   When I sign out
