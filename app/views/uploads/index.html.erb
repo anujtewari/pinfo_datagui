@@ -26,7 +26,7 @@
         <td><%= upload.name %></td>
         <td><%= link_to "Download File", upload.attachment_url %></td>
         <td><%= link_to "View Graphs", graphs_path(:id => upload.attachment_url) , :class => 'btn' %></td>        
-        <td><%= button_to "Delete",  upload, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{upload.name}?" %></td>
+        <td><%= link_to "Delete",  upload, method: :delete, name: "Delete", id: "Delete", class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{upload.name}?" %></td>
       </tr>
     <% end %>
   </tbody>
