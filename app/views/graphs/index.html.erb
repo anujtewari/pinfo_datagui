@@ -29,7 +29,7 @@
     <tr style="align :left"><td style="align :left" name="yaxis" id="yaxis"> Y Axis </td> 
     <td> &nbsp; </td> 
     <% flag = 1%>
-    <td style="align :left"><%= select_tag "yAxisOptions", options_for_select( @keysMap, @keysMap.each do |x| end) , :multiple=>true, :prompt=>"Select at least one"%></td>
+    <td style="align :left"><%= select_tag "yAxisOptions", options_for_select( @keysMap, @keysMap.each do |x| end) , :multiple=>true%></td>
     </tr>
    
     
@@ -126,24 +126,30 @@
   }; 
 
     function validateform(){
-      var checkBox_list = document.getElementsByTagName('input');
-      var flag = 0;
-      for (var i = 0; i < checkBox_list.length; i++) {
-          var checkbox = checkBox_list[i];       
-          if (checkbox.getAttribute('type') == 'checkbox') {
-              if(checkbox.checked)
-              {
-                flag = 1;
-              }
+          var selectXaxis = document.getElementById('xaxis');
+          var xaxisValue = selectXaxis.options[selectXaxis.selectedIndex].value
+          var yAxisOptions = document.getElementById('yAxisOptions');
+          //console.log(yAxisOptions);
+          console.log(xaxisValue);
+          //console.log(yAxisOptions.values);
+
+          var select1 = document.getElementById("yAxisOptions");
+          var selected1 = [];
+          for (var i = 0; i < select1.length; i++) {
+              if (select1.options[i].selected) selected1.push(select1.options[i].value);
           }
-      } 
-      // if(flag == 0)
-      // {
-      //   alert("You did not select any attribute for Y axis");
-      //   return false;
-      // }        
-      // else
-        return true;
+          console.log(selected1);
+
+          
+          if(selected1.indexOf(xaxisValue) > -1)
+          {
+            var errorMsg = "Selecting same values for x and y is not allowed. Redundant parameter: " + xaxisValue;
+            alert(errorMsg);
+            return false;
+          }
+          else
+            return true;
+      
     }  
 </script>
 
