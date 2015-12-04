@@ -35,10 +35,11 @@ class GraphsController < ApplicationController
     end
 
     xAxisHeadings = params[:xaxis];
-    yAxisHeadings = getYAxisHeadings(parsedResult)
+    yAxisHeadings = params[:yAxisOptions]
     xAxisLabel    = params[:xUnits]
     yAsixLabel    = params[:yUnits]
     typeOfGraph   = params[:graphType]
+    
 
     #For rows and tableHeadings for displaying table with chart
     @rows = parsedResult

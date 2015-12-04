@@ -29,18 +29,7 @@
     <tr style="align :left"><td style="align :left" name="yaxis" id="yaxis"> Y Axis </td> 
     <td> &nbsp; </td> 
     <% flag = 1%>
-    <% @keysMap.each do |x| %>         
-         <td style="display:inline-block; width:33% ">
-            <% if flag == 1 then%>
-            <% flag = 2%>
-            <%= check_box_tag("y_#{x}_default",1,false,disabled:true) %><%= label_tag(:line, "#{x}") %> </td>
-            <% elsif flag == 2 then %>
-            <% flag = 0%>
-            <%= check_box_tag("y_#{x}_default",1,true) %><%= label_tag(:line, "#{x}") %> </td>
-            <% else %>
-            <%= check_box_tag("y_#{x}_default",1,false) %><%= label_tag(:line, "#{x}") %> </td>
-            <%end%>
-    <% end %> 
+    <td style="align :left"><%= select_tag "yAxisOptions", options_for_select( @keysMap, @keysMap.each do |x| end) , :multiple=>true, :prompt=>"Select at least one"%></td>
     </tr>
    
     
@@ -148,12 +137,12 @@
               }
           }
       } 
-      if(flag == 0)
-      {
-        alert("You did not select any attribute for Y axis");
-        return false;
-      }        
-      else
+      // if(flag == 0)
+      // {
+      //   alert("You did not select any attribute for Y axis");
+      //   return false;
+      // }        
+      // else
         return true;
     }  
 </script>
