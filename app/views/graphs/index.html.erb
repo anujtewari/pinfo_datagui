@@ -29,7 +29,7 @@
     <tr style="align :left"><td style="align :left" name="yaxis" id="yaxis"> Y Axis </td> 
     <td> &nbsp; </td> 
     <% flag = 1%>
-    <td style="align :left"><%= select_tag "yAxisOptions", options_for_select( @keysMap, @keysMap.each do |x| end) , :multiple=>true%></td>
+    <td style="align :left"><%= select_tag "yAxisOptions", options_for_select( @keysMap, @keysMap[1]) , :multiple=>true%></td>
     </tr>
    
     
@@ -143,7 +143,7 @@
           
           if(selected1.indexOf(xaxisValue) > -1)
           {
-            var errorMsg = "Selecting same values for x and y is not allowed. Redundant parameter: " + xaxisValue;
+            var errorMsg = "Selecting same values for X-Axis and Y-Axis is not allowed. Redundant parameter: " + xaxisValue;
             alert(errorMsg);
             return false;
           }
